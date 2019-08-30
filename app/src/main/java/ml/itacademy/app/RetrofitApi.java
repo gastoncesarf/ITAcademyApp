@@ -4,7 +4,7 @@ import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import java.util.concurrent.TimeUnit;
-import ml.itacademy.app.services.ItemsService;
+import ml.itacademy.app.services.ItemService;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -14,7 +14,7 @@ public class RetrofitApi {
     private static RetrofitApi instance;
     public static final String BASE_URL = "https://api.mercadolibre.com/";
 
-    private ItemsService itemsService;
+    private ItemService itemsService;
 
     public static RetrofitApi getInstance() {
         if (instance == null) {
@@ -39,10 +39,10 @@ public class RetrofitApi {
             .client(client)
             .build();
 
-        itemsService = retrofit.create(ItemsService.class);
+        itemsService = retrofit.create(ItemService.class);
     }
 
-    public ItemsService getItemsService() {
+    public ItemService getItemsService() {
         return itemsService;
     }
 }
